@@ -1,0 +1,72 @@
+﻿@page "/{username}"
+@using System.Globalization
+@using TwitterMarijaTask.Data
+@using TwitterMarijaTask.Services
+@using TwitterMarijaTask.Components
+@inject IGetPostService GetPostService
+@inject IGetUserService GetUserService
+<div class="profile-page-container">
+<div  class="profile-header"style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+<div  class="cover-photo"style="border-bottom: 1px solid #ddd; font-family: Arial, sans-serif; max-width=600px;">
+        <h1 style="font-size: 24px; margin: 0;"><strong>@user?.Name</strong></h1>
+        <p style="color: darkgray" class="profile-count">@NumberPosts() posts</p>
+    <div style="height: 200px; background-color: #d3dde2; max-width=600px;"></div>
+
+    <div style="position: relative; margin-top: -60px; padding-left: 20px; padding-bottom: 15px;">
+        <img src="@user?.ImageUrl" class="profile-avatar"
+             style="border-radius: 50%; border: 4px solid white; width: 120px; height: 120px; object-fit: cover; background-color: #cfd8dc;" />
+
+        <div style="margin-top: 10px;" class="profile-info">
+                <h1 class="profile-name"style="font-size: 26px; margin: 0;"><strong>@user?.Name</strong></h1>
+            <h5 class="profile-username"style="color: gray; margin: 4px 0;">@("@" + user?.Username)</h5>
+            <br/>
+            <h6 style="color: #555;" class="profile-joined">
+                <i class="bi bi-calendar3" style="margin-right: 5px; color: gray;"></i>
+                Joined @FormatDate(@user.JoinedOn)
+        
+            </h6>
+        </div>
+    </div>
+</div>
+    </div>
+@if (posts == null)
+{
+    <p>Loading...</p>
+}
+else if (!posts.Any())
+{
+    <p>No posts found.</p>
+}
+else
+{
+    <div class="post-container">
+    @foreach (var post in posts)
+    {
+        <PostCard Post="post" />
+    }
+        </div>
+}
+</div>
+@code {
+    [Parameter] public string username { get; set; }
+    private List<Post>? posts;
+    private User? user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await GetPostService.GetPostsByUsernameAsync(username);
+        user = await GetUserService.GetUserByIdAsync(1);
+    }
+    public String FormatDate(DateOnly date)
+    {
+        var formatedDate = date.ToString("MMM yyyy", CultureInfo.InvariantCulture);
+        return char.ToUpper(formatedDate[0]) + formatedDate.Substring(1);
+
+    }
+    public int NumberPosts()
+    {
+
+        return posts?.Count ?? 0;
+        ;
+    }
+}

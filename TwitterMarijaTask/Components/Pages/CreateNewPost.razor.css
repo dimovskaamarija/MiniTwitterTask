@@ -1,0 +1,17 @@
+﻿.new-post-wrapper {
+    position: absolute;
+    left: 500px;
+    top: 200px;
+    width: 600px;
+}
+
+@media (max-width: 500px) {
+    .new-post-wrapper {
+        position: static !important;
+        width: 100% !important;
+        margin: 1rem auto !important;
+        padding: 0 0.5rem !important;
+        left: auto !important;
+        top: auto !important;
+    }
+}

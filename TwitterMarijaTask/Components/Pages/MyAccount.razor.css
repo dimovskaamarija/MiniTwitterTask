@@ -1,0 +1,61 @@
+@media (max-width: 500px) {
+ 
+  .profile-header {
+    position: relative !important;
+    background: #fff !important;
+    padding-bottom: 0   !important;
+  }
+
+  
+  .cover-photo {
+    height: 120px !important;
+    overflow: visible !important;
+    border-bottom: none !important;
+  }
+ 
+  .cover-photo > h1
+   {
+    font-size: 20px;
+  }
+    .cover-photo > p.profile-count{
+        font-size: 12px;
+    }
+   
+    .profile-avatar-container {
+        position: absolute !important;
+        top: 80px !important; 
+        left: 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+  .profile-avatar {
+    width:         80px !important;
+    height:        80px !important;
+    border:        3px solid #fff !important;
+    object-fit:    cover     !important;
+    border-radius: 50%       !important;
+    margin:        0         !important;
+  }
+
+  .profile-info {
+    margin:      0        !important;
+    text-align:  left     !important;
+  }
+  .profile-name     { font-size: 20px !important; margin: 0 !important; }
+  .profile-username,
+  .profile-joined   { font-size: 12px !important; margin: 4px 0 !important; }
+
+  .profile-page-container .card:first-child {
+    margin-top: 160px !important;  
+  }
+  .post-container{
+      padding-top:260px;
+  }
+  .profile-joined{
+      font-size: 14px;
+      margin: auto;
+  }
+  
+}

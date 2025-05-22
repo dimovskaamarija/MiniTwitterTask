@@ -1,0 +1,52 @@
+﻿@using TwitterMarijaTask.Data
+@using TwitterMarijaTask.Services
+@inject IGetUserService GetUserService;
+
+@code {
+    private User? user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        user = await GetUserService.GetUserByIdAsync(1);
+    }
+}
+<div  class="d-flex flex-column vh-100 bg-light" style="width: 250px;">
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">TwitterMarijaTask</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="nav flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="dimovskaamarija">
+                <span class="bi bi-person-fill-nav" aria-hidden="true"></span> Profile
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3 post-button">
+            <NavLink class="nav-link" href="create">
+                <span class="" aria-hidden="true"></span> Post
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+<div class="mt-auto border-top px-3 py-3 d-flex align-items-center">
+    <img src="@user.ImageUrl" class="rounded-circle me-2"  width="30px" height="30px" alt="User Avatar">
+    <div>
+        <div class="fw-bold">@user.Name</div>
+        <div class="text-muted">@user.Username</div>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,30 @@
+﻿@page "/"
+@using TwitterMarijaTask.Data
+@using TwitterMarijaTask.Services
+@using TwitterMarijaTask.Components
+@inject IGetPostService GetPostService
+
+@if (posts == null)
+{
+    <p>Loading...</p>
+}
+else if (!posts.Any())
+{
+    <p>No posts found.</p>
+}
+else
+{
+    @foreach (var post in posts)
+    {
+        <PostCard Post="post" />
+    }
+}
+
+@code {
+    private List<Post>? posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await GetPostService.GetAllPostsAsync();
+    }
+}

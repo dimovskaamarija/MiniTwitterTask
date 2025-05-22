@@ -1,0 +1,44 @@
+@media (max-width: 400px) {
+    .create-post-card {
+        max-width: 100%;
+        margin: 0.5rem;
+    }
+
+    .create-post-body {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .create-profile-img {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0.5rem;
+    }
+
+    .create-post-form {
+        width: 100%;
+    }
+
+    .create-post-textarea {
+        font-size: 16px;
+        padding: 0.5rem;
+    }
+
+    .create-image-label {
+        margin-top: 0.75rem;
+    }
+
+    .submit-container {
+        width: 100%;
+        margin-top: 0.75rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .create-post-alert {
+        margin: 0.5rem;
+    }
+}

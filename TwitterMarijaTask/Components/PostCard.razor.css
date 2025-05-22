@@ -1,0 +1,52 @@
+@media (max-width: 500px) {
+  
+    .custom-card-body .profile-img {
+        float: left !important;
+        margin-right: 8px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .custom-card-body .text-content {
+        overflow: hidden !important; 
+    }
+        
+   
+    .custom-card-body .post-img {
+        float: none !important;
+        clear: both !important; 
+        display: block !important;
+        margin: 12px auto !important; 
+        max-height: 150px !important;
+        width: 70% !important;
+    }
+
+
+    .custom-card-body .action-container {
+        clear: both !important;
+        margin: 12px 0 !important;
+        justify-content: center !important;
+      
+    }
+
+    .custom-card-body .delete-btn {
+        clear: both !important;
+    }
+
+
+
+    .custom-card-body .action-buttons {
+        justify-content: flex-start !important;
+        padding-left: 12px !important;
+    }
+
+    .custom-card-body .action-container {
+        justify-content: flex-start !important;
+        margin: 12px 0 0 12px !important;
+        position: absolute;
+        left: 80px !important;
+    }
+
+    
+
+
+}
