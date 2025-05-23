@@ -148,8 +148,7 @@ namespace TwitterMarijaTask.Tests
             var exception = await Assert.ThrowsAsync<ArgumentException>(() => CreatePostService.CreateANewPostAsync("Test post description extends range Test post description extends range Test post description extends range Test post description extends Tes", "Images/posts/post1.jpg", 10));
             Assert.Equal("Description must be between 12 and 140 characters.", exception.Message);
             Assert.Empty(ctx.Posts);
-        }
-        // Description = 11 characters 
+        } 
         [Fact]
         public async Task CreateANewPostAsync_DescriptionBelowMinimumLength_ThrowsArgumentException()
         {
