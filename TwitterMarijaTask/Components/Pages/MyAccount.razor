@@ -40,12 +40,11 @@ else if (!posts.Any())
 else
 {
     <div class="post-container">
-    @foreach (var post in posts)
-    {
-        <PostCard Post="post" />
-    }
+    
+   <PostsList PostList="posts"/>
         </div>
 }
+
 </div>
 @code {
     [Parameter] public string username { get; set; }
@@ -69,4 +68,5 @@ else
         return posts?.Count ?? 0;
         ;
     }
+ 
 }

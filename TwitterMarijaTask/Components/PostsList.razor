@@ -1,0 +1,40 @@
+﻿@using TwitterMarijaTask.Data
+@using TwitterMarijaTask.Components
+
+@if (PostList == null)
+{
+<p>Loading...</p>
+}
+else if (!PostList.Any())
+{
+<p>No posts found.</p>
+}
+else
+{
+@foreach (var post in PostList.Take(PostsCounter))
+    {
+<PostCard Post="post" />
+    }
+    @if(PostsCounter < PostList.Count)
+    {
+        <div style="display:flex; justify-content: center">
+            <button class="btn btn-dark rounded-4" style="margin-top: 20px; margin-bottom:20px" @onclick="LoadMorePosts">Load More</button>
+        </div>
+    }
+}
+
+@code {
+    [Parameter]
+    public List<Post>? PostList { get; set; }
+
+    public int PostsCounter = 2;
+
+    private void LoadMorePosts()
+    {
+        if (PostsCounter < (PostList?.Count ?? 0))
+        {
+            PostsCounter += 2;
+        }
+    }
+}
+

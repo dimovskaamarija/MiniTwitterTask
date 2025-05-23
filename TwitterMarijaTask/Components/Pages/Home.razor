@@ -14,17 +14,17 @@ else if (!posts.Any())
 }
 else
 {
-    @foreach (var post in posts)
-    {
-        <PostCard Post="post" />
-    }
+    <PostsList PostList="posts"  />
+    
 }
 
 @code {
     private List<Post>? posts;
+    private int postsCounter = 6; 
 
     protected override async Task OnInitializedAsync()
     {
         posts = await GetPostService.GetAllPostsAsync();
     }
+   
 }
