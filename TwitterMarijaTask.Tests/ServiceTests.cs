@@ -97,8 +97,27 @@ namespace TwitterMarijaTask.Tests
             Assert.Equal(post.UserId ,result.UserId);
             
         }
-      
+
         [Fact]
+        public async Task CreateANewPostAsync_CreatesPostSuccessfully()
+        {
+            var ctx = GetInMemoryDbContext();
+            ctx.Users.Add(new User { Id = 10, Name = "Test1", Email = "test@gmail.com", Username = "test", ImageUrl = "Images/users/user1.jpg", JoinedOn = DateOnly.FromDateTime(DateTime.Now.AddDays(-1)) });
+            var CreatePostService = new CreatePostService(ctx);
+            await ctx.SaveChangesAsync();
+            //Act
+            var post = await CreatePostService.CreateANewPostAsync("Test success", "Images/posts/post1.jpg", 10);
+            //Assert
+            var result = await ctx.Posts.FindAsync(post.Id);
+            Assert.NotNull(result);
+            Assert.Equal("Test success", result.Description);
+            Assert.Equal("Images/posts/post1.jpg", result.ImageUrl);
+            Assert.Equal(10, result.UserId);
+            Assert.Single(ctx.Posts);
+        }
+
+
+            [Fact]
         public async Task CreateANewPostAsync_DescriptionIsMaximumLength_CreatesPostSuccessfully()
         {
             //Arrange
@@ -126,7 +145,7 @@ namespace TwitterMarijaTask.Tests
             var CreatePostService = new CreatePostService(ctx);
            await  ctx.SaveChangesAsync();
             //Act & Assert
-            var exception = await Assert.ThrowsAsync<ArgumentException>(() => CreatePostService.CreateANewPostAsync("Test post description extends range. Test post description extends range. Test post description extends range. Test post description extends range.", "Images/posts/post1.jpg", 10));
+            var exception = await Assert.ThrowsAsync<ArgumentException>(() => CreatePostService.CreateANewPostAsync("Test post description extends range Test post description extends range Test post description extends range Test post description extends Tes", "Images/posts/post1.jpg", 10));
             Assert.Equal("Description must be between 12 and 140 characters.", exception.Message);
             Assert.Empty(ctx.Posts);
         }

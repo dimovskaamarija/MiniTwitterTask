@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TwitterMarijaTask.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f75b041f327d62081d9c095bfdda0989bcaef60f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02faec48aede596210040f6bef199ae0e255b599")]
 [assembly: System.Reflection.AssemblyProductAttribute("TwitterMarijaTask.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TwitterMarijaTask.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
